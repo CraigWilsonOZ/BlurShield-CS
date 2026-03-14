@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'">
+  <title>BlurShield - Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>BlurShield Options</h1>
+
+    <!-- Personal Info -->
+    <section class="card">
+      <h2>Personal Info</h2>
+      <p class="description">Your emails and IPs are always masked on every active site, regardless of category toggles.</p>
+      <div class="field">
+        <label for="personalEmails">Email Addresses (one per line)</label>
+        <textarea id="personalEmails" rows="3" placeholder="user@example.com"></textarea>
+      </div>
+      <div class="field">
+        <label for="personalIPs">IP Addresses (one per line)</label>
+        <textarea id="personalIPs" rows="3" placeholder="192.168.1.1"></textarea>
+      </div>
+      <button id="savePersonalInfo" class="btn">Save Personal Info</button>
+    </section>
+
+    <!-- Custom Patterns -->
+    <section class="card">
+      <h2>Custom Patterns</h2>
+      <p class="description">Add keywords or regex patterns to mask. Keywords are matched as exact text; regex patterns use JavaScript regex syntax.</p>
+      <div id="customPatternsList" class="patterns-list"></div>
+      <div class="add-pattern">
+        <select id="newPatternType">
+          <option value="keyword">Keyword</option>
+          <option value="regex">Regex</option>
+        </select>
+        <input type="text" id="newPatternValue" placeholder="Pattern value">
+        <input type="text" id="newPatternLabel" placeholder="Label (optional)">
+        <button id="addPattern" class="btn btn-small">Add</button>
+      </div>
+    </section>
+
+    <!-- Site Management -->
+    <section class="card">
+      <h2>Sites</h2>
+      <p class="description">Manage which sites have masking enabled.</p>
+      <div id="siteList" class="site-list"></div>
+      <div class="add-site">
+        <input type="text" id="newSiteHost" placeholder="example.com">
+        <button id="addSite" class="btn btn-small">Add Site</button>
+      </div>
+    </section>
+
+    <!-- Bypass List -->
+    <section class="card">
+      <h2>Bypass List</h2>
+      <p class="description">Sites that are completely excluded from masking. The extension will not run on these sites at all.</p>
+      <div id="bypassList" class="site-list"></div>
+      <div class="add-site">
+        <input type="text" id="newBypassSite" placeholder="google.com">
+        <button id="addBypass" class="btn btn-small">Add Bypass</button>
+      </div>
+    </section>
+
+    <!-- Category Details -->
+    <section class="card">
+      <h2>Categories</h2>
+      <p class="description">Enable or disable pattern categories globally.</p>
+      <div id="categoryDetails" class="category-details"></div>
+    </section>
+
+    <!-- Preferences -->
+    <section class="card">
+      <h2>Preferences</h2>
+      <div class="field">
+        <label for="blurIntensity">Blur Intensity: <span id="blurValue">8</span>px</label>
+        <input type="range" id="blurIntensity" min="2" max="20" value="8">
+      </div>
+      <div class="field">
+        <label class="checkbox-label">
+          <input type="checkbox" id="revealOnHover">
+          Reveal on hover
+        </label>
+      </div>
+      <button id="savePreferences" class="btn">Save Preferences</button>
+    </section>
+
+    <!-- Import/Export -->
+    <section class="card">
+      <h2>Import / Export</h2>
+      <p class="description">Export your settings to share across machines, or import a previously exported config.</p>
+      <div class="import-export-row">
+        <button id="exportSettings" class="btn">Export JSON</button>
+        <button id="importSettingsBtn" class="btn">Import JSON</button>
+        <input type="file" id="importFile" accept=".json" hidden>
+      </div>
+    </section>
+
+    <div id="statusMessage" class="status-message"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

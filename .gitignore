@@ -1,0 +1,9 @@
+blurshield.zip
+*.zip
+node_modules/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+*~
+.markdownlint.json

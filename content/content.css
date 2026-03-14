@@ -1,0 +1,12 @@
+/* content/content.css - BlurShield masking styles */
+.blurshield-hidden {
+  filter: blur(8px);
+  user-select: none;
+  /* No transition - blur must apply instantly */
+}
+
+.blurshield-hover-reveal .blurshield-hidden:hover {
+  filter: blur(0);
+  user-select: auto;
+  transition: filter 0.2s ease;
+}

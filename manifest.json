@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "BlurShield",
+  "version": "1.0.0",
+  "description": "Mask sensitive information across cloud consoles and websites - Azure, AWS, GCP, API keys, emails, and more.",
+  "permissions": ["storage", "activeTab", "scripting", "webNavigation"],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "patterns/registry.js",
+        "patterns/azure.js",
+        "patterns/aws.js",
+        "patterns/gcp.js",
+        "patterns/openai.js",
+        "patterns/anthropic.js",
+        "patterns/general.js",
+        "patterns/custom.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
